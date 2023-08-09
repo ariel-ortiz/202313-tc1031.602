@@ -1,0 +1,23 @@
+= Tc1031.602 Programming of Data Structures and Fundamental Algorithms
+
+_Tecnológico de Monterrey, Estado de México._
+
+This project contains all the source files that the course instructor will be writing in class during the 2023 August-December semester.
+
+You can inspect the files directly through this site, or you can use `git` to obtain a local copy of these. In the latter case, you must do the following:
+
+1. If necessary, http://git-scm.com/downloads[install a git client] in your computer.
+ 
+2. Clone this repository. Type at the terminal:
+    
+    git clone https://github.com/ariel-ortiz/202313-tc1031.602.git tc1031
+    
+ 3. Change your current working directory to `tc1031`:
+
+    cd tc1031
++
+You will find all the project source files under this directory.
+
+4. Every time the instructor updates an existing file or creates a new one, you will need to run the repository *pull* command. Type at the terminal from within the `tc1031` directory:
+    
+    git pull
