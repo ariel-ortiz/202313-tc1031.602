@@ -29,6 +29,18 @@ public:
         return _dino[index];
     }
 
+    DinoSet operator+(const DinoSet& other) const
+    {
+        DinoSet result;
+        for (int i = 0; i < total_dinos; ++i) {
+            DinoId id = static_cast<DinoId>(i);
+            if (contains(id) or other.contains(id)) {
+                result.add(id);
+            }
+        }
+        return result;
+    }
+
     std::string to_string() const
     {
         std::string result = "";
