@@ -46,49 +46,49 @@ TEST_CASE("test the LinkedList class")
         REQUIRE(d.size() == 8);
     }
 
-    // SECTION("test is_empty") {
-    //     REQUIRE(a.is_empty());
-    //     REQUIRE_FALSE(b.is_empty());
-    //     REQUIRE_FALSE(c.is_empty());
-    //     REQUIRE_FALSE(d.is_empty());
-    // }
+    SECTION("test is_empty") {
+        REQUIRE(a.is_empty());
+        REQUIRE_FALSE(b.is_empty());
+        REQUIRE_FALSE(c.is_empty());
+        REQUIRE_FALSE(d.is_empty());
+    }
 
-    // SECTION("test insert_back") {
-    //     a.insert_back(true);
-    //     a.insert_back(false);
-    //     REQUIRE(a.size() == 2);
-    //     REQUIRE(a.to_string() == "[1, 0]");
-    //     b.insert_back(5);
-    //     b.insert_back(10);
-    //     b.insert_back(500);
-    //     REQUIRE(b.size() == 7);
-    //     REQUIRE(b.to_string() == "[4, 3, 2, 1, 5, 10, 500]");
-    //     c.insert_back("eta");
-    //     REQUIRE(c.to_string()
-    //         == "[dseta, épsilon, delta, gamma, beta, alfa, eta]");
-    //     d.insert_back(3.1416);
-    //     d.insert_back(2.7182);
-    //     d.insert_back(1.618);
-    //     d.insert_back(1.4142);
-    //     REQUIRE(d.size() == 12);
-    //     REQUIRE(d.to_string()
-    //         == "[-5.5, 76.125, 0, 42, 10.75, -4.25, 2.5, 1, "
-    //           "3.1416, 2.7182, 1.618, 1.4142]");
-    // }
+    SECTION("test insert_back") {
+        a.insert_back(true);
+        a.insert_back(false);
+        REQUIRE(a.size() == 2);
+        REQUIRE(a.to_string() == "[1, 0]");
+        b.insert_back(5);
+        b.insert_back(10);
+        b.insert_back(500);
+        REQUIRE(b.size() == 7);
+        REQUIRE(b.to_string() == "[4, 3, 2, 1, 5, 10, 500]");
+        c.insert_back("eta");
+        REQUIRE(c.to_string()
+            == "[dseta, épsilon, delta, gamma, beta, alfa, eta]");
+        d.insert_back(3.1416);
+        d.insert_back(2.7182);
+        d.insert_back(1.618);
+        d.insert_back(1.4142);
+        REQUIRE(d.size() == 12);
+        REQUIRE(d.to_string()
+            == "[-5.5, 76.125, 0, 42, 10.75, -4.25, 2.5, 1, "
+              "3.1416, 2.7182, 1.618, 1.4142]");
+    }
 
-    // SECTION("test constructor with initializer_list") {
-    //     LinkedList<bool> a {};
-    //     REQUIRE(a.to_string() == "[]");
-    //     LinkedList<int> b {1, 2, 3, 4};
-    //     REQUIRE(b.to_string() == "[1, 2, 3, 4]");
-    //     LinkedList<std::string> c {"alfa", "beta", "gamma", "delta",
-    //         "épsilon", "dseta"};
-    //     REQUIRE(c.to_string()
-    //         == "[alfa, beta, gamma, delta, épsilon, dseta]");
-    //     LinkedList<double> d {1, 2.5, -4.25, 10.75, 42, 0, 76.125, -5.5};
-    //     REQUIRE(d.to_string()
-    //         == "[1, 2.5, -4.25, 10.75, 42, 0, 76.125, -5.5]");
-    // }
+    SECTION("test constructor with initializer_list") {
+        LinkedList<bool> a {};
+        REQUIRE(a.to_string() == "[]");
+        LinkedList<int> b {1, 2, 3, 4};
+        REQUIRE(b.to_string() == "[1, 2, 3, 4]");
+        LinkedList<std::string> c {"alfa", "beta", "gamma", "delta",
+            "épsilon", "dseta"};
+        REQUIRE(c.to_string()
+            == "[alfa, beta, gamma, delta, épsilon, dseta]");
+        LinkedList<double> d {1, 2.5, -4.25, 10.75, 42, 0, 76.125, -5.5};
+        REQUIRE(d.to_string()
+            == "[1, 2.5, -4.25, 10.75, 42, 0, 76.125, -5.5]");
+    }
 
     // SECTION("test contains") {
     //     REQUIRE_FALSE(a.contains(true));
@@ -157,30 +157,30 @@ TEST_CASE("test the LinkedList class")
     //           "-4.25, 2.5, 1, 1.618, 1.4142]");
     // }
 
-    // SECTION("test remove_front") {
-    //     REQUIRE_THROWS_AS(a.remove_front(), std::length_error);
-    //     REQUIRE(b.remove_front() == 4);
-    //     REQUIRE(b.remove_front() == 3);
-    //     REQUIRE(b.size() == 2);
-    //     REQUIRE(b.to_string() == "[2, 1]");
-    //     REQUIRE(b.remove_front() == 2);
-    //     REQUIRE(b.remove_front() == 1);
-    //     REQUIRE(b.size() == 0);
-    //     REQUIRE(b.to_string() == "[]");
-    //     REQUIRE_THROWS_AS(b.remove_front(), std::length_error);
-    //     REQUIRE(c.remove_front() == "dseta");
-    //     REQUIRE(c.remove_front() == "épsilon");
-    //     REQUIRE(c.remove_front() == "delta");
-    //     REQUIRE(c.size() == 3);
-    //     REQUIRE(c.to_string() == "[gamma, beta, alfa]");
-    //     double total = 0;
-    //     while (not d.is_empty()) {
-    //         total += d.remove_front();
-    //     }
-    //     REQUIRE(d.size() == 0);
-    //     REQUIRE(d.to_string() == "[]");
-    //     REQUIRE(total == 122.625);
-    // }
+    SECTION("test remove_front") {
+        REQUIRE_THROWS_AS(a.remove_front(), std::length_error);
+        REQUIRE(b.remove_front() == 4);
+        REQUIRE(b.remove_front() == 3);
+        REQUIRE(b.size() == 2);
+        REQUIRE(b.to_string() == "[2, 1]");
+        REQUIRE(b.remove_front() == 2);
+        REQUIRE(b.remove_front() == 1);
+        REQUIRE(b.size() == 0);
+        REQUIRE(b.to_string() == "[]");
+        REQUIRE_THROWS_AS(b.remove_front(), std::length_error);
+        REQUIRE(c.remove_front() == "dseta");
+        REQUIRE(c.remove_front() == "épsilon");
+        REQUIRE(c.remove_front() == "delta");
+        REQUIRE(c.size() == 3);
+        REQUIRE(c.to_string() == "[gamma, beta, alfa]");
+        double total = 0;
+        while (not d.is_empty()) {
+            total += d.remove_front();
+        }
+        REQUIRE(d.size() == 0);
+        REQUIRE(d.to_string() == "[]");
+        REQUIRE(total == 122.625);
+    }
 
     // SECTION("test remove_back") {
     //     REQUIRE_THROWS_AS(a.remove_back(), std::length_error);
