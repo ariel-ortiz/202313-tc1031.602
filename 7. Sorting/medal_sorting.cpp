@@ -48,6 +48,17 @@ bool compare_countries(const Country& a, const Country& b)
     return a.name < b.name;
 }
 
+void print_result(const std::vector<Country>& values)
+{
+    for (Country c: values) {
+        std::cout
+            << std::setw(13) << std::left << c.name << " "
+            << std::setw(2) << std::right << c.gold << " "
+            << std::setw(2) << c.silver << " "
+            << std::setw(2) << c.bronze << "\n";
+    }
+}
+
 int main(int argc, char* argv[])
 {
     if (argc != 2) {
@@ -59,8 +70,7 @@ int main(int argc, char* argv[])
     std::vector<Country> values;
     read_file(file_name, values);
     std::sort(values.begin(), values.end(), compare_countries);
-    for (Country c: values) {
-        std::cout << c.name << " " << c.gold << " "
-            << c.silver << " " << c.bronze << "\n";
-    }
+    print_result(values);
+
+    return 0;
 }
