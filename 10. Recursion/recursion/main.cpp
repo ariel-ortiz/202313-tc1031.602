@@ -22,7 +22,14 @@ int main()
     std::cout << "size(b) = " << size(b) << "\n";
     std::cout << "cons_end(7, b) = " << cons_end(7, b) << "\n";
     std::cout << "cons_end(108, a) = " << cons_end(108, a) << "\n";
-
-
+    std::cout << "sum(a) = " << sum(a) << "\n";
+    std::cout << "sum(b) = " << sum(b) << "\n";
+    std::cout << "duplicate(a) = " << duplicate(a) << "\n";
+    std::cout << "duplicate(b) = " << duplicate(b) << "\n";
+    std::cout << "last(a) = " << last(a) << "\n";
+    std::cout << "but_last(a) = " << but_last(a) << "\n";
+    std::cout << "maximum(a) = " << maximum(a) << "\n";
+    std::cout << "append(a, b) = " << append(a, b) << "\n";
+    std::cout << "append(a, a) = " << append(a, a) << "\n";
     return 0;
 }
