@@ -99,9 +99,18 @@ IntList reverse(const IntList& a)
     return IntList {};
 }
 
+// Complexity: O(N), N = size(a) + size(b)
 IntList merge(const IntList& a, const IntList& b)
 {
-    return IntList {};
+    if (is_empty(a)) {
+        return b;
+    } else if (is_empty(b)) {
+        return a;
+    } else if (first(a) < first(b)) {
+        return cons(first(a), merge(rest(a), b));
+    } else {
+        return cons(first(b), merge(a, rest(b)));
+    }
 }
 
 bool is_prefix(const IntList& a, const IntList& b)

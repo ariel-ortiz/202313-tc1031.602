@@ -31,5 +31,6 @@ int main()
     std::cout << "maximum(a) = " << maximum(a) << "\n";
     std::cout << "append(a, b) = " << append(a, b) << "\n";
     std::cout << "append(a, a) = " << append(a, a) << "\n";
+    std::cout << merge(IntList {1, 3, 4, 6, 7, 10}, IntList {2, 5, 8}) << "\n";
     return 0;
 }
