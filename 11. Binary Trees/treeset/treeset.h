@@ -2,6 +2,8 @@
 
 #include <functional>
 #include <initializer_list>
+#include <queue>
+#include <cmath>
 
 template<typename T>
 class TreeSet {
@@ -11,18 +13,18 @@ public:
     // Complexity: O(1)
     TreeSet() {}
 
-    // Complexity: O(N)
-    ~TreeSet()
-    {
-        _delete(_root);
-    }
-
     // Complexity: O(N log N)
     TreeSet(std::initializer_list<T> args)
     {
         for (T value : args) {
             add(value);
         }
+    }
+
+    // Complexity: O(N)
+    ~TreeSet()
+    {
+        _delete(_root);
     }
 
     // Complexity: O(log N)
@@ -77,9 +79,62 @@ public:
         return _contains(value, _root);
     }
 
+    // Complexity: O(N)
     void inorder(std::function<void(T)> fn) const
     {
-        return _inorder(fn, _root);
+        _inorder(fn, _root);
+    }
+
+    // Complexity: O(N)
+    void preorder(std::function<void(T)> fn) const
+    {
+        _preorder(fn, _root);
+    }
+
+    // Complexity: O(N)
+    void postorder(std::function<void(T)> fn) const
+    {
+        _postorder(fn, _root);
+    }
+
+    // Complexity: O(N)
+    void levelorder(std::function<void(T)> fn) const
+    {
+        std::queue<Node*> queue;
+        queue.push(_root);
+        while (not queue.empty()) {
+            Node* p = queue.front();
+            queue.pop();
+            if (p) {
+                fn(p->value);
+                queue.push(p->left);
+                queue.push(p->right);
+            }
+        }
+    }
+
+    // Complexity: O(N)
+    int height() const
+    {
+        return _height(_root);
+    }
+
+    // Complexity: O(N)
+    bool is_full() const
+    {
+        return _is_full(_root);
+    }
+
+    // Complexity: O(N)
+    int leaf_count() const
+    {
+        return _leaf_count(_root);
+    }
+
+    // Complexity: O(N)
+    bool is_perfect() const
+    {
+        return size() == static_cast<int>(std::pow(2, height() + 1) - 1);
     }
 
 private:
@@ -123,6 +178,61 @@ private:
             _inorder(fn, p->left);
             fn(p->value);
             _inorder(fn, p->right);
+        }
+    }
+
+    void _preorder(std::function<void(T)> fn, Node* p) const
+    {
+        if (p) {
+            fn(p->value);
+            _preorder(fn, p->left);
+            _preorder(fn, p->right);
+        }
+    }
+
+    void _postorder(std::function<void(T)> fn, Node* p) const
+    {
+        if (p) {
+            _postorder(fn, p->left);
+            _postorder(fn, p->right);
+            fn(p->value);
+        }
+    }
+
+    int _height(Node* p) const
+    {
+        if (p) {
+            return std::max(_height(p->left), _height(p->right)) + 1;
+        } else {
+            return -1;
+        }
+    }
+
+    bool _is_full(Node* p) const
+    {
+        if (p) {
+            if (not p->left and not p->right) {
+                return true;
+            } else if (p->left and p->right) {
+                return _is_full(p->left) and _is_full(p->right);
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    int _leaf_count(Node* p) const
+    {
+        if (p) {
+            if (not p->left and not p->right) {
+                return 1;
+            } else {
+                return _leaf_count(p->left) + _leaf_count(p->right);
+            }
+        } else {
+            return 0;
         }
     }
 
